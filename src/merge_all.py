@@ -5,6 +5,11 @@ import math
 import pandas as pd
 import glob
 import csv
+from nltk.corpus import stopwords 
+from nltk.stem.wordnet import WordNetLemmatizer
+import string
+import re
+from afinn import Afinn
 
 # import US states shape file get california geo coordinate outline
 state_boundary_us = gpd.read_file("./spacial-data/usa/usa-states-census-2014.shp")
@@ -62,18 +67,15 @@ def generate_random(num, polygon):
     with open('napa_coordinates.txt', 'w') as fp:
         fp.write('\n'.join('{}, {}'.format(str(x[1]), str(x[0])) for x in geopoint))
 
-
-print("Generating Coordinates...")
-generate_random(124799, cal)
-print("Coordinates Generated")
-
 # # # # # # # # # # # # # # # # # # #  # #  # # #  # #
 # # # # # # # # Merge Predictions # # # # # # # # # #
 # # # # # # # # # # # # # # # # # # #  # #  # # #  # #
+
+
 # Merges predictions from AWS, sentiment scores, and geo coordinates into file for visualization
 # path to unlabeled formatted tweet splits
-path = "C:/Users/linso/Desktop/Georgia_Tech/Spring_19/CSE_6242/Project/CSE6242GroupProject/src/data/unlabeled_california_from_website/formatted_tweets/tweets_california_formatted"
-all_files = glob.glob(path + "*.txt")
+path1 = "./unlabeled_california_from_website/formatted_tweets/tweets_california_formatted"
+all_files = glob.glob(path1 + "*.txt")
 
 # reads through all files and merges
 li = []
@@ -84,22 +86,43 @@ unlabeled = pd.concat(li, axis=0, ignore_index=True)
 unlabeled = unlabeled.drop(['category'], axis=1)
 
 # path to predictions.tsv
-path2 = "C:/Users/linso/Desktop/Georgia_Tech/Spring_19/CSE_6242/Project/CSE6242GroupProject/src/data/comprehend/predictions"
-labels = pd.read_csv(path2 + ".tsv", sep='\t')
+path2 = "./comprehend/predictions.tsv"
+labels = pd.read_csv(path2, sep='\t')
 df = pd.concat([unlabeled, labels], axis=1)
 df['name'] = 'California'
 
-# Reading in coordinates and sentiment and writing to formatted tweets file
+print("Generating Coordinates...")
+test = generate_random(len(df)-1, cal)
+print("Coordinates Generated")
+
+# clean tweets
+tweetsList = df['tweet'].tolist()
+stop = set(stopwords.words('english'))
+exclude = set(string.punctuation) 
+lemma = WordNetLemmatizer()
+def clean(doc):
+    stop_free = " ".join([i for i in doc.lower().split() if i not in stop])
+    punc_free = ''.join(ch for ch in stop_free if ch not in exclude)
+    normalized = " ".join(lemma.lemmatize(word) for word in punc_free.split())
+    result = re.sub(r"http\S+", "", normalized)
+    return result
+tweetsList_clean = [clean(tweet).split() for tweet in tweetsList] 
+
+# run sentiment analysis on tweets
+afinn = Afinn()
+sentiments = [afinn.score(' '.join(tweet)) for tweet in tweetsList_clean]
+df['sentiment'] = sentiments
+
+# Reading in coordinates 
 coords = pd.read_csv("napa_coordinates.txt", sep=",", header=None, names=["lat", "long"])
-california_sentiment = pd.read_csv("./CaliforniaTweetsWSentiment.csv")
-california_sentiment = california_sentiment.head(124799)
+minimum = min([len(df),len(coords)])
+coords = coords.head(minimum)
+df = df.head(minimum)
 
-# updating sentiment scores and coordinates and writing csv
-california_labeled['sentiment'] = california_sentiment['Sentiment'].values
-california_labeled['lat'] = coords['lat'].values
-california_labeled['long'] = coords['long'].values
+df['lat'] = coords['lat'].values
+df['long'] = coords['long'].values
 
-california_labeled.to_csv('./california_labeled_formatted_tweets.txt', sep='\t')
+df.to_csv('./california_labeled_formatted_tweets.txt', sep='\t')
 
 # sanity check
-print(california_labeled.head())
+print(df.head())
