@@ -10,10 +10,10 @@ import pandas as pd
 import tweepy
 
 # Get your Twitter API credentials and enter them here
-consumer_key = "GbMsbPFBM92RoOOrwcWDB6P7n"
-consumer_secret = "ZhMYSI4p4aIg0691rcbD5SSGN5kZDigMlTYheyFBuzWzbTPl4A"
-access_key = "1012431044-ddKjt5bXWb6BZB8KekOmcXatHYlYPVSGGWl1IoW"
-access_secret = "y7TZOqFfnS7uUHanFh0KY3V5eLeE07IC5f1YMUzeYaw98"
+consumer_key = ""
+consumer_secret = ""
+access_key = ""
+access_secret = ""
 
 def read_tweetIDs(file_name):
     tweets = pd.read_csv(file_name)
