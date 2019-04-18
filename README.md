@@ -30,43 +30,44 @@ The folder structure for this project will be as shown below. Refer to this thro
 The Data folder will contain all data we use in this project and CODE will contain the
 python scripts needed.
 
--CODE
-  -Data
-      -comprehend
-      -CrisisNLP_labeled_data_crowdflower
-      -formatted_tweets
-          -unlabeled
-          -labeled
-      -Geo
-      -spacial-data
-          -usa
-              -shape files
-      -tweet_ids
-          -labeled
-          -unlabeled
-      -tweets
-          -labeled
-          -unlabeled
-  -Scripts
-      -merge_all.py
-      -tweet_formatter.py
-      -geo.py
-      -getPredictions.py
-      -get_labeled_tweets.py
-      -tweet_downloader.py
-
-  -visualize
-  -lib
+-Structure:
+  
+     -DVT/
+    -CODE/Data/
+          -comprehend
+          -CrisisNLP_labeled_data_crowdflower
+          -formatted_tweets
+              -unlabeled
+              -labeled
+          -Geo
+          -spacial-data
+              -usa
+                  -shape files
+          -tweet_ids
+              -labeled
+              -unlabeled
+          -tweets
+              -labeled
+              -unlabeled
+        -Scripts
+            -merge_all.py
+            -tweet_formatter.py
+            -geo.py
+            -getPredictions.py
+            -get_labeled_tweets.py
+            -tweet_downloader.py
+        -visualize
+        -lib
 
 
 For now create the following structure and ensure that the python files are saved:
 
-CODE
-    -Data
-      -tweet_ids
-      -labeled
+    -CODE/Data/
+    -tweet_ids
+    -labeled
 
 
+    -Scripts/
     -merge_all.py
     -tweet_formatter.py
     -geo.py
