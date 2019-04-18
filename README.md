@@ -30,7 +30,7 @@ The folder structure for this project will be as shown below. Refer to this thro
 The Data folder will contain all data we use in this project and CODE will contain the
 python scripts needed.
 
-CODE
+-CODE
   -Data
       -comprehend
       -CrisisNLP_labeled_data_crowdflower
