@@ -1,0 +1,17 @@
+DEMO:
+Here we give a brief set of instructions to set up and run the project.
+
+Note: Chrome is the only browser tested and therefore known to work with this project
+
+1. Unzip the contents of team39final.zip
+2. Open a terminal window, cd to the CODE folder (contains lib and visualize folders), and execute 'http-server' to serve up the project files
+3. In your browser go to http://localhost:8080/visualize
+
+To interact with the visualization, do the following:
+
+a. On the time slider at the bottom, change the range to whatever time range you want to view. If you keep it at the default of zero you will see no points.
+b. You can move the time slider back and forth to see how the data changes over time.
+c. You can click the play/pause button to the left of the time slider to automatically step through the data chronologically.
+d. The legend is interactive and allows you to show/hide the topics of interest by simply clicking on the color.
+e. Upon hovering over a node, a tooltip with pertinent data about the node will appear and disappear when the cursor moves off of the node.
+f. You can zoom and pan the map using your mouse (scroll wheel to zoom and left-button-down+drag to pan)
