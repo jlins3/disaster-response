@@ -1,5 +1,5 @@
 {
-  "name": "dataviz-project-template",
+  "name": "Disaster Visualization Tool",
   "version": "0.1.0",
   "description": "Interactive visualization project",
   "main": "webpack.config.js",
