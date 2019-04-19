@@ -15,9 +15,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/<your username here>/dataviz-project-template"
+    "url": "git+https://github.com/jlinson3/disaster-response"
   },
   "keywords": [],
-  "author": "<your name here>",
+  "author": "Jared",
   "license": "MIT"
 }
