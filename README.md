@@ -1,5 +1,6 @@
 # Description
 
+Reccomened to view in Firefox
 demo: http://bl.ocks.org/jlins3/5d0a708f9764bd1cffde26b8ffc0b4d4/1cc4384f6df65889ed3c5ea1538f4559aa4f165f
 
 We believed that there is a need for an analytics solution that can tap into the vast information that twitter brings and
