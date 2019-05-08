@@ -116,7 +116,7 @@ h.	Select the create an IAM role option and leave the default selection
 i.	Under name suffix, give a name of your choosing
 j.	Click on the Train Classifier button.
 
-After few minutes, the classifier will be trained, and the performance metrics will be displayed. In our case, the accuracy was 0.6766, precision: 0.5302, recall: 0.498 and F1 score: 0.50.
+After few minutes, the classifier will be trained, and the performance metrics will be displayed. In our case, the accuracy was 0.7666, precision: 0.6302, recall: 0.598 and F1 score: 0.60.
 The overall accuracy is better than random coin flip, but further text preprocessing could have been done to bring up the overall precision and recall scores.
 
 ### Step 4. Generate coordinates
