@@ -1,5 +1,7 @@
 # Description
-This project is part of a course project for Data and Visual Analytics- CSE6250. This was done with a project team. I moved the project here, from a private student repository, while I continue to add to this work.  
+This project is part of a course project for Data and Visual Analytics- CSE6250. This was done with a project team. I moved the project here, from a private student repository, while I continue to add to this work.  \
+
+Instructions in video format: https://youtu.be/x2feHQbnJUA
 
 Poster Presentation: https://youtu.be/70if8yITUwk
 
